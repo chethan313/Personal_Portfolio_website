@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chethan P S | Portfolio</title>
+    <style>
+        /* Modern Tech Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #131a26;
+            --accent-blue: #0070f3;
+            --accent-glow: #00dfd8;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #222f43;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            /* Soft radial glow to mimic an intelligent network dashboard */
+            background-image: radial-gradient(circle at 80% 20%, rgba(0, 112, 243, 0.15) 0%, transparent 40%),
+                              radial-gradient(circle at 10% 70%, rgba(0, 223, 216, 0.1) 0%, transparent 45%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-top: 80px; /* Offset for the sticky header */
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* STICKY HEADER NAV */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: "Courier New", Courier, monospace;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-glow);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        /* HERO PROFILE BLOCK */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0 40px 0;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .hero-tagline span {
+            color: var(--accent-blue);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-glow);
+        }
+
+        /* SECTION SEPARATORS */
+        section {
+            padding: 60px 0 20px 0;
+        }
+
+        section h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        /* Left-side syntax symbol indicator to emphasize the code styling */
+        section h2::before {
+            content: "/>";
+            font-family: "Courier New", Courier, monospace;
+            color: var(--accent-glow);
+            font-size: 1.3rem;
+        }
+
+        /* TEXT SUMMARY */
+        .summary-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            color: #d1d5db;
+        }
+
+        .summary-box p {
+            margin-bottom: 15px;
+        }
+
+        .summary-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* EDUCATION TABLE SECTION */
+        .edu-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .edu-table th, .edu-table td {
+            padding: 16px 20px;
+            text-align: left;
+        }
+
+        .edu-table th {
+            background-color: rgba(34, 47, 67, 0.4);
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .edu-table td {
+            border-bottom: 1px solid rgba(34, 47, 67, 0.5);
+            color: #d1d5db;
+        }
+
+        .edu-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* GRID LAYOUTS FOR SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skills-card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .skills-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 112, 243, 0.5);
+        }
+
+        .skills-card h3 {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skills-card h3::before {
+            content: "●";
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+        }
+
+        .skills-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* ITEM PROJECTS CARD DISPLAY */
+        .card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 223, 216, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .card-subtitle {
+            font-size: 0.95rem;
+            color: var(--accent-blue);
+            font-weight: 500;
+            margin-top: 3px;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(34, 47, 67, 0.5);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-body ul {
+            list-style: none;
+            color: #d1d5db;
+            font-size: 0.98rem;
+        }
+
+        .card-body li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        /* Subtle bullet replacements to match coders style */
+        .card-body li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-glow);
+            font-weight: bold;
+        }
+
+        .card-body p {
+            color: #d1d5db;
+            padding-left: 5px;
+        }
+
+        .tech-tags {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(0, 112, 243, 0.1);
+            color: #70b1ff;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            border: 1px solid rgba(0, 112, 243, 0.25);
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        /* CAMPUS EXTRA LEADERSHIP EXPERIENCES SECTION */
+        .leadership-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            transition: border-color 0.2s;
+        }
+
+        .leadership-card:hover {
+            border-color: rgba(0, 112, 243, 0.3);
+        }
+
+        /* CONTACT SECTION DESIGN */
+        .contact-box {
+            background: #0d131f;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative fake terminal header for UI aesthetic */
+        .contact-box::before {
+            content: "● ● ●";
+            position: absolute;
+            top: 12px;
+            left: 20px;
+            font-size: 0.75rem;
+            color: rgba(156, 163, 175, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .contact-box h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .contact-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .contact-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(34, 47, 67, 0.3);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .contact-btn .btn-label {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.75rem;
+            color: var(--accent-glow);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-btn:hover {
+            background: rgba(0, 112, 243, 0.1);
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 112, 243, 0.15);
+        }
+
+        /* FOOTER STRUCTURE */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: rgba(11, 15, 25, 0.5);
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        footer .tech-stack-signature {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.8rem;
+            color: rgba(0, 223, 216, 0.6);
+        }
+
+        /* Web Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* Simplifies navigation layout structure on small screens */
+            }
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .card-date {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WEBSITE STATIC HEADER NAVIGATION BAR -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">CHETHAN<span>_PS</span></a>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#leadership" class="nav-link">Leadership</a></li>
+                <li><a href="#contact" class="nav-link" style="color: var(--accent-glow);">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- HERO CORE PROFILE CONTAINER -->
+        <div class="hero-section">
+            <h1 class="hero-title">Chethan P S</h1>
+            <div class="hero-tagline">std::fresher &gt; <span>Aspiring AI Engineer & Software Developer</span></div>
+            <div class="contact-info">
+                <span>📍 Chikkamagaluru, India</span>
+                <span>✉️ <a href="mailto:chethanps31@gmail.com">chethanps31@gmail.com</a></span>
+                <span>🔗 <a href="https://linkedin.com/in/chethan-p-s" target="_blank">LinkedIn</a></span>
+            </div>
+        </div>
+
+        <!-- PROFILE ABOUT ME SECTION -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="summary-box">
+                <p>
+                    I am an enthusiastic final-year Computer Application (BCA) student with a deep fascination for software engineering and modern artificial intelligence applications. I specialize in building practical Python solutions, exploring core algorithmic workflows, and anchoring Large Language Models using Retrieval-Augmented Generation (RAG).
+                </p>
+                <p>
+                    Alongside my coding commitments, I play an active role in campus community life. Directing student groups, spearheading event coordination pipelines, and acting as a bridge between the student cohort and college authorities has developed my core skills in organization, collective accountability, and project execution.
+                </p>
+            </div>
+        </section>
+
+        <!-- EDUCATION TIMELINE TABLES SECTION -->
+        <section id="education">
+            <h2>Education</h2>
+            <div style="overflow-x: auto;">
+                <table class="edu-table">
+                    <thead>
+                        <tr>
+                            <th>Qualification</th>
+                            <th>Institution / Board</th>
+                            <th>Timeline</th>
+                            <th>Academic Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bachelor of Computer Applications (BCA)</strong></td>
+                            <td>M.E.S.M.P.S First Grade College</td>
+                            <td>2023 - 2026</td>
+                            <td style="color: var(--accent-glow);"><strong>8.85 CGPA</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Class XII (PUC - PCMB)</strong></td>
+                            <td>Govt. Pre-University College</td>
+                            <td>2021 - 2023</td>
+                            <td>84.33%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Class X (SSLC)</strong></td>
+                            <td>Jnana Rashmi English High School</td>
+                            <td>2016 - 2021</td>
+                            <td>91.22%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TECHNICAL PROFILE SKILLS SECTION -->
+        <section id="skills">
+            <h2>Technical Stack</h2>
+            <div class="skills-grid">
+                <div class="skills-card">
+                    <h3>AI Engineering</h3>
+                    <div class="skills-text">LangChain, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Vector Databases (FAISS, ChromaDB), Gemini API pipelines.</div>
+                </div>
+                <div class="skills-card">
+                    <h3>Languages & Core</h3>
+                    <div class="skills-text">Python, Data Structures & Algorithms (Fundamentals), SQL (Structured Queries), JavaScript, HTML5, CSS3, Relational Database Design (MySQL).</div>
+                </div>
+                <div class="skills-card">
+                    <h3>Personal Capital</h3>
+                    <div class="skills-text">Technical Event Management, Core Leadership, Public Communication, Environmental Adaptability, Group Coordination.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACADEMIC PROJECTS SECTION -->
+        <section id="projects">
+            <h2>Projects Portfolio</h2>
+
+            <!-- Project Card 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">AI Campus Assistant (RAG-Based)</div>
+                        <div class="card-subtitle">Self-Initiated Technical Project</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Developed a functional local retrieval assistant designed to parse institutional PDF datasets and answer natural-language queries about admission frameworks, fee scales, and regulations.</li>
+                        <li>Utilized LangChain libraries to establish robust raw document data load-and-segment sequences.</li>
+                        <li>Structured vector index registries using FAISS and ChromaDB, routing information matching directly into the Gemini API for synthesis.</li>
+                        <li>Configured modern interface tools including multi-language text capabilities, microphone voice inputs, and conversational memory states.</li>
+                        <li>Constructed a separate, authenticated admin dashboard layout to simplify records modification and storage updates safely.</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">FAISS</span>
+                        <span class="tag">ChromaDB</span>
+                        <span class="tag">Gemini-API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Student Management System</div>
+                        <div class="card-subtitle">Database Coursework Project</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Designed and developed a full-stack Student Management System to efficiently manage student records, course information, enrollments, and academic performance.</li>
+                        <li>Created a normalized relational database using MySQL with primary keys, foreign keys, constraints, and views to ensure data integrity and consistency.</li>
+                        <li>Implemented RESTful APIs using Node.js and Express.js to perform CRUD operations, integrated the database with a responsive web interface, and developed SQL queries, joins, subqueries, and reports for data retrieval and analysis.</li>
+                        <li>The project demonstrates strong understanding of Database Management Systems (DBMS), relational database design, and full-stack application development.</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tag">SQL</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">RDBMS Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Personal Professional Portfolio Webpage</div>
+                        <div class="card-subtitle">Front-End Development Sandbox</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>Designed and built a clean responsive landing interface to log practical software challenges, project milestones, and personal connection endpoints online.</p>
+                    <div class="tech-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript (ES6)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAMPUS EXTRA LEADERSHIP EXPERIENCES SECTION -->
+        <section id="leadership">
+            <h2>Leadership & Core History</h2>
+
+            <!-- Leadership Card 1 -->
+            <div class="leadership-card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">President — IT Union</div>
+                        <div class="card-subtitle">M.E.S.M.P.S First Grade College</div>
+                    </div>
+                    <div class="card-date">2025 - 2026</div>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Elected by the student community to manage and steer the institutional computer department's IT union framework.</li>
+                        <li>Guided collaborative planning groups to deploy technical coding tasks, logical bootcamps, and inter-branch student workshops successfully.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Leadership Card 2 -->
+            <div class="leadership-card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Class Representative (CR)</div>
+                        <div class="card-subtitle">BCA Department Cohort</div>
+                    </div>
+                    <div class="card-date">3 Consecutive Years (2023 - 2026)</div>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Nominated by peers and verified by department professors to monitor everyday communication streams, share lecture adjustments, and look after core division schedules.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Leadership Card 3 -->
+            <div class="leadership-card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Rajyapuraskar Recipient (Governor's Award)</div>
+                        <div class="card-subtitle">Bharat Scouts and Guides India</div>
+                    </div>
+                    <div class="card-date">Awarded: 2021</div>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Honored with the premium state-level Governor's Award during high school for demonstrating robust personal responsibility, volunteer work devotion, and leadership values.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW CONTACT CONNECTIONS SECTION -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-box">
+                <h3>Let's initialize a new connection</h3>
+                <p>I am actively seeking entry-level opportunities, trainee programs, or software internships. Let's talk!</p>
+                
+                <div class="contact-links-grid">
+                    <!-- Phone Connection -->
+                    <a href="tel:+917019582328" class="contact-btn">
+                        <span class="btn-label">call_to://</span>
+                        <span>+91 70195 82328</span>
+                    </a>
+                    
+                    <!-- Email Connection -->
+                    <a href="mailto:chethanps31@gmail.com" class="contact-btn">
+                        <span class="btn-label">mail_to://</span>
+                        <span>chethanps31@gmail.com</span>
+                    </a>
+                    
+                    <!-- LinkedIn Connection -->
+                    <a href="https://linkedin.com/in/chethan-p-s" target="_blank" class="contact-btn">
+                        <span class="btn-label">linkedin://</span>
+                        <span>chethan-p-s</span>
+                    </a>
+                    
+                    <!-- GitHub Connection -->
+                    <a href="https://github.com/" target="_blank" class="contact-btn">
+                        <span class="btn-label">github://</span>
+                        <span>View Repositories</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MAIN WEBSITE CORE FOOTER SIGNATURE -->
+    <footer>
+        <p>&copy; 2026 Chethan P S. All rights reserved.</p>
+        
+    </footer>
+
+</body>
+</html>
